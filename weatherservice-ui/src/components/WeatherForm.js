@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function WeatherForm({ onSubmit }) {
   const [city, setCity] = useState('');
@@ -7,12 +8,13 @@ function WeatherForm({ onSubmit }) {
   const handleCityChange = (e) => setCity(e.target.value);
   const handleCountryChange = (e) => setCountry(e.target.value);
 
-  const handleFormSubmit = (e) => {
-    onSubmit(e, city, country);
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent form default behavior
+    onSubmit(city, country); // Call onSubmit with city and country
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className="weather-form">
+    <form onSubmit={handleSubmit} className="weather-form">
       <div className="form-group">
         <label htmlFor="city">City:</label>
         <input
@@ -41,5 +43,9 @@ function WeatherForm({ onSubmit }) {
     </form>
   );
 }
+
+WeatherForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default WeatherForm;
