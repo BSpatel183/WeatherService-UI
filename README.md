@@ -41,7 +41,12 @@ cd WeatherService-UI
 ```
 npm install
 ```
+5. Add .env file inside the weatherservice-ui with content below:
+```
+REACT_APP_API_URL=https://localhost:7032 [Add URL on which your backend app is running]
+REACT_APP_API_KEY="Api-key-1"
 
+```
 
 ## Usage
 
@@ -76,8 +81,6 @@ weather-service-ui/
 
 ## API Integration
 
-The application communicates with a backend Weather API located at:
-```https://localhost:7032/api/weather```
 
 ### Request Parameters:
 - `city`: Name of the city (string).
